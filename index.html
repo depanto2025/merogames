@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>عالم ميرو السحري | مغامرات الأميرة ميرال التعليمية</title>
+  
+  <!-- PWA & Mobile Meta Tags -->
+  <meta name="theme-color" content="#FF5E8E">
+  <meta name="description" content="تطبيق تعليمي تفاعلي شيق ومميز للبطلة ميرال لتأسيس اللغة العربية والإنجليزية والرياضيات بطريقة ممتعة ومبتكرة.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="assets/images/icon_192.png">
+  <link rel="apple-touch-icon" href="assets/images/icon_512.png">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Floating Background Decorative Bubbles -->
+  <div class="bg-bubbles" aria-hidden="true">
+    <div class="bg-bubble"></div>
+    <div class="bg-bubble"></div>
+    <div class="bg-bubble"></div>
+    <div class="bg-bubble"></div>
+  </div>
+
+  <!-- Confetti Container -->
+  <div id="confettiContainer"></div>
+
+  <!-- Main App Content -->
+  <div class="app-container">
+
+    <!-- Top Header & Mero Profile -->
+    <header class="top-header">
+      <div class="header-hero-profile" id="switchAvatarBtn" title="انقري لتغيير مظهر ميرو!">
+        <div class="mero-avatar-wrapper">
+          <img src="assets/images/mero_avatar_badge.png" alt="ميرو" class="mero-current-avatar-img">
+          <span class="avatar-crown">👑</span>
+        </div>
+        <div class="hero-meta">
+          <h1>
+            <span>مرحباً</span>
+            <span class="mero-name">ميرو (ميرال)</span>
+            <span>💖</span>
+          </h1>
+          <p id="currentAvatarTitle">ميرو البطلة الشقية والذكية</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="stars-badge" title="نجوم ميرو التي جمعتها!">
+          <span>⭐</span>
+          <span class="user-stars-count">10</span>
+        </div>
+        <button class="action-icon-btn" id="audioToggleBtn" title="تشغيل / كتم الصوت">🔊</button>
+      </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav class="main-nav-bar" aria-label="أقسام التطبيق">
+      <button class="main-nav-btn active" data-tab="arabic">
+        <span class="nav-icon">📖</span>
+        <span>حروف عربي</span>
+      </button>
+      <button class="main-nav-btn" data-tab="english">
+        <span class="nav-icon">🔤</span>
+        <span>English ABC</span>
+      </button>
+      <button class="main-nav-btn" data-tab="math">
+        <span class="nav-icon">🔢</span>
+        <span>أرقام وحساب</span>
+      </button>
+      <button class="main-nav-btn" data-tab="games">
+        <span class="nav-icon">🎈</span>
+        <span>ألعاب ميرو</span>
+      </button>
+      <button class="main-nav-btn" data-tab="certificate">
+        <span class="nav-icon">🏆</span>
+        <span>شهادة التقدير</span>
+      </button>
+    </nav>
+
+    <!-- =========================================================
+         قسم 1: الحروف واللغة العربية
+         ========================================================= -->
+    <main id="module-arabic" class="app-module-view active">
+      <div class="module-banner">
+        <div class="banner-content">
+          <h2>بستان الحروف العربية الجميلة 🌸</h2>
+          <p>اضغطي على أي حرف لتسمعي صوته وكلمته، وتكتبي مع ميرو على السبورة السحرية!</p>
+        </div>
+        <img src="assets/images/mero_avatar_badge.png" alt="ميرو" class="banner-sticker mero-current-avatar-img">
+      </div>
+
+      <div class="letters-grid" id="arabicGrid">
+        <!-- Rendered dynamically by data.js -->
+      </div>
+    </main>
+
+    <!-- =========================================================
+         قسم 2: اللغة الإنجليزية (English Module)
+         ========================================================= -->
+    <section id="module-english" class="app-module-view">
+      <div class="module-banner" style="background: linear-gradient(135deg, #FF6B8B, #FF8EA5);">
+        <div class="banner-content">
+          <h2>English Alphabet & Phonics with Mero 🌟</h2>
+          <p>Tap any letter to hear the sound, learn new words, and trace letters!</p>
+        </div>
+        <img src="assets/images/mero_garden_badge.png" alt="Princess Mero" class="banner-sticker">
+      </div>
+
+      <div class="letters-grid" id="englishGrid">
+        <!-- Rendered dynamically by data.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================
+         قسم 3: الرياضيات والأرقام والأشكال
+         ========================================================= -->
+    <section id="module-math" class="app-module-view">
+      <div class="module-banner" style="background: linear-gradient(135deg, #00B894, #55EFC4);">
+        <div class="banner-content">
+          <h2>عالم الأرقام والأشكال الذكية لميرو 🔢</h2>
+          <p>تعلمي الأرقام بالعربي والإنجليزي، وعِدي مع ميرو الأشياء الجميلة!</p>
+        </div>
+        <img src="assets/images/mero_avatar_badge.png" alt="ميرو" class="banner-sticker mero-current-avatar-img">
+      </div>
+
+      <div class="numbers-grid" id="numbersGrid">
+        <!-- Numbers 1 to 10 rendered dynamically -->
+      </div>
+
+      <h3 class="shapes-section-title">الأشكال الهندسية الملونة 🎨</h3>
+      <div class="shapes-grid" id="shapesGrid">
+        <!-- Shapes rendered dynamically -->
+      </div>
+
+      <div id="mathPuzzlesContainer">
+        <!-- Dynamic visual addition puzzles -->
+      </div>
+    </section>
+
+    <!-- =========================================================
+         قسم 4: ألعاب ميرو ومرحها (Games Arcade)
+         ========================================================= -->
+    <section id="module-games" class="app-module-view">
+      <div class="games-sub-tabs">
+        <button class="game-sub-tab active" data-game="balloon">
+          <span>🎈</span>
+          <span>فرقعة البالونات السحرية</span>
+        </button>
+        <button class="game-sub-tab" data-game="memory">
+          <span>🧩</span>
+          <span>كروت ذاكرة ميرو</span>
+        </button>
+      </div>
+
+      <!-- Balloon Pop Area -->
+      <div id="balloonGameArea" class="balloon-play-area">
+        <!-- Balloons spawn here -->
+      </div>
+
+      <!-- Memory Game Area -->
+      <div id="memoryGameArea" style="display: none;">
+        <div class="memory-grid" id="memoryGrid">
+          <!-- Memory cards generated here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         قسم 5: شهادة التقدير الملكية للأميرة ميرال
+         ========================================================= -->
+    <section id="module-certificate" class="app-module-view">
+      <div class="certificate-preview-card" id="printableCertificate">
+        <div class="cert-header-crown">👑</div>
+        <h2 class="cert-main-title">شهادة تفوق وامتياز ملكية</h2>
+        <p class="cert-sub-title">أكاديمية ميرو للذكاء والمرح والتعليم المبكر</p>
+
+        <div class="cert-mero-photo-wrap">
+          <img src="assets/images/mero_avatar_badge.png" id="certMeroPhoto" class="cert-mero-photo" alt="الأميرة ميرال">
+        </div>
+
+        <h1 class="cert-child-name">الأميرة البطلة / ميرال (ميرو) 💖</h1>
+        <p class="cert-statement">
+          تُمنح هذه الشهادة الذهبية للبطلة العبقرية <strong>ميرال</strong> (عمر 4 سنوات) تقديراً لتفوقها الباهر وشغفها في تعلم الحروف العربية واللغة الإنجليزية والأرقام والرياضيات بخط رائع وذكاء مميز!
+        </p>
+
+        <div class="cert-stats-row">
+          <div class="cert-stat-item">
+            <div class="val" id="certStarsEarned">10</div>
+            <div class="lbl">نجوم التميز ⭐</div>
+          </div>
+          <div class="cert-stat-item">
+            <div class="val">المستوى الذهبي 🥇</div>
+            <div class="lbl">الرتبة التعليمية</div>
+          </div>
+          <div class="cert-stat-item">
+            <div class="val" id="certDate">نوفمبر 2026</div>
+            <div class="lbl">تاريخ التكريم 📅</div>
+          </div>
+        </div>
+
+        <div class="cert-actions-row">
+          <button class="cert-print-btn" onclick="window.MeroApp.printCertificate()">
+            <span>🖨️</span>
+            <span>طباعة أو حفظ الشهادة كـ PDF</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- =========================================================
+       نافذة تفاصيل الحرف والسبورة والكتابة (Letter Tracing Modal)
+       ========================================================= -->
+  <div class="app-modal" id="letterDetailModal">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="window.MeroApp.closeLetterDetail()" title="إغلاق">✕</button>
+
+      <div class="detail-modal-layout">
+        <div class="detail-card-hero">
+          <div class="detail-char" id="detailCharDisplay">أ</div>
+          <div class="detail-emoji" id="detailEmojiDisplay">🐰</div>
+          <div class="detail-meta">
+            <h3 id="detailWordDisplay">أرنب</h3>
+            <p id="detailSubDisplay">حرف الألف</p>
+          </div>
+        </div>
+
+        <div class="detail-actions-row">
+          <button class="detail-action-btn" id="detailSpeakBtn">
+            <span>🔊</span>
+            <span>استمعي للنطق</span>
+          </button>
+        </div>
+
+        <!-- سبورة التتبع والكتابة بالأصبع أو القلم -->
+        <div class="tracing-box">
+          <p style="font-weight: 800; margin-bottom: 8px; color: #4A5568;">✏️ مرري إصبعك أو القلم لتكتبي الحرف يا ميرو:</p>
+          <div class="tracing-canvas-wrapper">
+            <canvas id="tracingCanvas"></canvas>
+          </div>
+
+          <div class="tracing-tools-row">
+            <button class="brush-color-pick active" style="background: linear-gradient(45deg, red, yellow, lime, cyan, blue, magenta);" onclick="window.MeroApp.tracingBoard.setBrushColor('rainbow')" title="قلم قوس قزح السحري"></button>
+            <button class="brush-color-pick" style="background: #FF5E8E;" onclick="window.MeroApp.tracingBoard.setBrushColor('#FF5E8E')" title="وردي أميرات"></button>
+            <button class="brush-color-pick" style="background: #6C5CE7;" onclick="window.MeroApp.tracingBoard.setBrushColor('#6C5CE7')" title="بنفسجي ملكي"></button>
+            <button class="brush-color-pick" style="background: #00D2D3;" onclick="window.MeroApp.tracingBoard.setBrushColor('#00D2D3')" title="سماوي مبهج"></button>
+            <button class="brush-color-pick" style="background: #FED330;" onclick="window.MeroApp.tracingBoard.setBrushColor('#FED330')" title="ذهبي براق"></button>
+            <button class="tool-action-btn" onclick="window.MeroApp.tracingBoard.clearCanvas()">🧹 مسح السبورة</button>
+            <button class="tool-action-btn" style="background: #2ED573; color: #FFF;" onclick="window.MeroApp.tracingBoard.celebrate()">🌟 أنا كتبت الحرف!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       نافذة العدّ التفاعلي مع ميرو (Counting Modal)
+       ========================================================= -->
+  <div class="app-modal" id="countingModal">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="window.MeroApp.closeCountingModal()" title="إغلاق">✕</button>
+      <div id="countingContainer">
+        <!-- Counting items rendered by games.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       نافذة اختيار مظهر وصورة ميرو (Avatar Switcher Modal)
+       ========================================================= -->
+  <div class="app-modal" id="avatarModal">
+    <div class="modal-content-card" style="max-width: 480px;">
+      <button class="modal-close-btn" id="closeAvatarModal" title="إغلاق">✕</button>
+      <h3 style="text-align: center; font-size: 1.4rem; font-weight: 900; color: #2D3436; margin-bottom: 6px;">اختاري مظهركِ المفضل يا ميرو! 👑</h3>
+      <p style="text-align: center; color: #718096; font-size: 0.95rem;">صورتكِ الجميلة هي بطلة كل الألعاب والمغامرات</p>
+
+      <div class="avatar-choices-grid">
+        <div class="avatar-choice-card" data-avatar-id="smile">
+          <img src="assets/images/mero_avatar_badge.png" class="avatar-choice-img" alt="ميرو الضاحكة">
+          <div class="avatar-choice-title">ميرو البطلة 💖</div>
+          <div class="avatar-choice-desc">ابتسامتكِ المشرقة العسل</div>
+        </div>
+        <div class="avatar-choice-card" data-avatar-id="garden">
+          <img src="assets/images/mero_garden_badge.png" class="avatar-choice-img" alt="ميرو في الحديقة">
+          <div class="avatar-choice-title">ميرو الأميرة 🌸</div>
+          <div class="avatar-choice-desc">فستان الزهور في الحديقة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       رفيقة ميرو الذكية العائمة (Floating Interactive Companion)
+       ========================================================= -->
+  <div class="floating-companion-wrap">
+    <div class="companion-speech-bubble" id="companionSpeechBubble" dir="auto">
+      أهلاً بكِ في عالمي السحري! أنا ميرو، وأنتِ بطلتي الجميلة! 💖
+    </div>
+    <div class="companion-avatar-trigger" id="floatingMeroCompanion" title="اضغطي عليّ عشان أكلمكِ وأشجعكِ يا ميرو!">
+      <span class="companion-crown-mini">👑</span>
+      <img src="assets/images/mero_avatar_badge.png" id="companionAvatarImg" class="companion-img" alt="ميرو الرفيقة">
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/tracing.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
+
